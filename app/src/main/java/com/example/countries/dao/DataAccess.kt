@@ -22,18 +22,16 @@ import java.util.ArrayList
 import kotlin.reflect.typeOf
 
 class DataAccess {
-    lateinit var dataArray:List<Country>;
 
-     fun getBuilder():List<Country>{
 
+    suspend fun getBuilder():List<Country>?{
+        var dataArray:List<Country>?=null;
         try {
             var url="https://restcountries.com/v3.1/"
-//            val okhttpClient = OkHttpClient.Builder();
             val retrofit = Retrofit.Builder()
                 .baseUrl(url)
-//                .addConverterFactory(GsonConverterFactory.create())
+
                 .build()
-//        val retrofit=builder.build()
             Log.d("retro",retrofit.toString())
             val api = retrofit.create(Api::class.java)
             val scope = CoroutineScope(Dispatchers.IO).launch {
@@ -48,17 +46,14 @@ class DataAccess {
 
                        val prettyJson=  gson.toJson(
                             JsonParser.parseString(
-                                responseText// About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
+                                responseText
                             )
                         )
-//                        Log.d("success", prettyJson)
+
                         val gsonObject = GsonBuilder().create()
                         println("bodies "+ responseText )
                          dataArray   = gsonObject.fromJson(responseText,Array<Country>::class.java).toList()
-                        System.out.println("sizee"+dataArray.size)
-
-
-
+                        System.out.println("sizee"+dataArray?.size)
                     } else {
 
                         Log.d("failed", "failed")
@@ -70,42 +65,18 @@ class DataAccess {
 
         }
         catch(e:Exception ){
+            print("exception")
             System.out.println(e.toString())
         }
          return dataArray
 
 
     }
-//    suspend fun getData(){
-//
-//
-//
-//
-//    }
+
 }
 
 fun main(){
 
-
-
-//    val countryRequest=api.getCountries()
-//    countryRequest.enqueue( object : Callback<List<Country>> {
-//        override fun onResponse(call: retrofit2.Call<List<Country>>, response: Response<List<Country>>) {
-//           val countries=response.body()
-//            for ( c in countries!!)
-//                Log.d(c.name.toString(),c.population.toString())
-//
-//
-//
-//
-//                   }
-//
-//        override fun onFailure(call: retrofit2.Call<List<Country>>, t: Throwable) {
-//            Log.d("failure","failure")
-//        }
-//    }
-
-//    )
     System.out.println("!")
 
 
