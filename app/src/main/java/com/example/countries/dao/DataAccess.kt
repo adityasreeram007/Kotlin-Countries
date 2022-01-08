@@ -26,7 +26,7 @@ class DataAccess {
 
     suspend fun getBuilder():List<Country>?{
         var dataArray:List<Country>?=null;
-        try {
+
             var url="https://restcountries.com/v3.1/"
             val retrofit = Retrofit.Builder()
                 .baseUrl(url)
@@ -34,12 +34,13 @@ class DataAccess {
                 .build()
             Log.d("retro",retrofit.toString())
             val api = retrofit.create(Api::class.java)
-            val scope = CoroutineScope(Dispatchers.IO).launch {
+//            val scope = CoroutineScope(Dispatchers.IO).launch {
+
                 System.out.println("p!")
                 val response = api.getCountries()
                 System.out.println("p!")
                 Log.d("resq", response.toString())
-                withContext(Dispatchers.Main) {
+
                     if (response.isSuccessful) {
                         val gson = GsonBuilder().setPrettyPrinting().create()
                         val responseText =response.body()?.string()
@@ -54,20 +55,18 @@ class DataAccess {
                         println("bodies "+ responseText )
                          dataArray   = gsonObject.fromJson(responseText,Array<Country>::class.java).toList()
                         System.out.println("sizee"+dataArray?.size)
+
                     } else {
 
                         Log.d("failed", "failed")
                     }
-                }
-            }
 
-            System.out.println(scope.isCompleted)
 
-        }
-        catch(e:Exception ){
-            print("exception")
-            System.out.println(e.toString())
-        }
+//            }
+
+//            System.out.println(scope.isCompleted)
+
+
          return dataArray
 
 

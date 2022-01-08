@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.countries.adapter.CountryAdapter
 import com.example.countries.dao.DataAccess
 import com.example.countries.modal.Country
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
         var countryList:List<Country>?=null;
@@ -18,15 +18,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         recyclerView=findViewById(R.id.recyclerView)
-        recyclerView?.layoutManager=LinearLayoutManager(this)
         var dataaccess= DataAccess()
-        GlobalScope.launch {
-        countryList=dataaccess.getBuilder()
-            println("list "+ countryList?.get(0))
-            adapter=CountryAdapter(countryList)
-            recyclerView?.adapter =adapter
+        runBlocking {
+           val scope= async {
+
+
+                 dataaccess.getBuilder()
+
+            }
+            countryList=scope.await()
+
+
+
         }
+        println("list " + countryList?.get(0))
+        adapter = CountryAdapter(countryList)
+        recyclerView?.layoutManager=LinearLayoutManager(this)
+        recyclerView?.adapter = adapter
+        println("one")
 
     }
 }

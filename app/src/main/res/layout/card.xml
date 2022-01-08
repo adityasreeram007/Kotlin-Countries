@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="270dp"
             app:cardElevation="10dp"
             app:cardCornerRadius="20dp"
             android:layout_margin="10dp"
@@ -36,6 +36,7 @@
                 android:layout_marginBottom="5dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
         />
     </LinearLayout>
 
