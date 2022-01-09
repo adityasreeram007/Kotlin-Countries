@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <GridLayout android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:columnCount="2"
-                >
-        <TextView android:layout_columnWeight="1" android:text="one"
-                  android:paddingTop="3dp" android:paddingBottom="3dp"
-                  android:textAlignment="center" />
-        <TextView android:layout_columnWeight="1" android:textAlignment="center"
-                  android:text="one"  android:paddingTop="3dp"
-                  android:paddingBottom="3dp"/>
-    </GridLayout>
-</RelativeLayout>
+
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_height="100dp"
+            android:layout_width="match_parent"
+              android:layout_margin="5dp"
+
+
+>
+
+
+    <TextView android:text="one"
+              android:textAlignment="viewStart"
+              android:layout_columnWeight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="0dip"
+              android:layout_weight="1"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
+              android:layout_gravity="fill"
+              android:id="@+id/col1"
+              android:fontFamily="monospace"
+              android:textSize="20sp"
+              tools:ignore="RtlCompat"/>
+    <TextView
+            android:textAlignment="viewEnd"
+              android:layout_gravity="fill"
+              android:text="one"
+              android:paddingTop="5dp"
+              android:layout_columnWeight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="0dip"
+              android:layout_weight="1"
+              android:paddingBottom="5dp"
+              android:id="@+id/col2"
+              android:fontFamily="monospace"
+              android:textSize="20sp"
+
+            tools:ignore="RtlCompat"/>
+
+    </TableRow>

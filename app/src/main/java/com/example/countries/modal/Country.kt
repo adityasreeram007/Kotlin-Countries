@@ -12,7 +12,7 @@ data class Country(
     @SerializedName("unMember") var unMember:String,
     @SerializedName("independent") var independent:String,
     @SerializedName("capital") var capital:Array<String>,
-    @SerializedName("continent") var continent : Array<String>,
+    @SerializedName("continents") var continent : Array<String>,
     @SerializedName("landlocked") var borderProtected:String,
     @SerializedName("timezones") var timeZones:Array<String>,
     @SerializedName("flags") var flags:Flags,
