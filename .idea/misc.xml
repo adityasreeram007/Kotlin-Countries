@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/CountryDetail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/Vard.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/card.xml" value="0.24547101449275363" />
+        <entry key="app/src/main/res/layout/countrydetail.xml" value="0.20542046605876393" />
+        <entry key="app/src/main/res/layout/listcard.xml" value="0.2056159420289855" />
       </map>
     </option>
   </component>

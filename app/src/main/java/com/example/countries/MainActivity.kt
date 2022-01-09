@@ -2,6 +2,10 @@ package com.example.countries
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countries.adapter.CountryAdapter
@@ -34,10 +38,19 @@ class MainActivity : AppCompatActivity() {
 
         }
         println("list " + countryList?.get(0))
-        adapter = CountryAdapter(countryList)
+        adapter = CountryAdapter(this,countryList)
         recyclerView?.layoutManager=LinearLayoutManager(this)
         recyclerView?.adapter = adapter
+//        var card:RelativeLayout?=findViewById(R.id.cardview)
+//        card?.setOnClickListener{
+//
+//
+//        }
+
         println("one")
 
+    }
+    fun makeToast(){
+        Toast.makeText(this,"this is a toast",Toast.LENGTH_SHORT)
     }
 }

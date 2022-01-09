@@ -1,6 +1,7 @@
 package com.example.countries.modal
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import kotlin.collections.*;
 
 data class Country(
@@ -21,17 +22,17 @@ data class Country(
 
 
 
-    )
+    ):Serializable
 
 data class Flags(
     @SerializedName("png") var pngFlag:String,
     @SerializedName("svg") var svgFlag:String,
-)
+):Serializable
 
 data class Name(
     @SerializedName("common") var common:String,
     @SerializedName("official") var official:String
-)
+):Serializable
 
 //{
 //    "name":{
